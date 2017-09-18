@@ -1,0 +1,38 @@
+.header {
+	display: none;
+}
+
+.page_heading {
+	display: none;
+}
+
+a[href*="http://"]:link:after, a[href*="http://"]:visited:after {
+	content: " (" attr(href) ") ";
+	font-size: 90%;
+}
+
+a {
+	text-decoration: none;
+}
+
+p.tip {
+	border: 1px solid black;
+	margin-left: 3em;
+	margin-right: 3em;
+	padding: 0.25em;
+}
+
+.toc li span {
+	display: none;
+}
+
+p.noprint {
+	display: none;
+	width: 0;
+	height: 0;
+	overflow: none;
+}
+
+iframe {
+	display: none;
+}

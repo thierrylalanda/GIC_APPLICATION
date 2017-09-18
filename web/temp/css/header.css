@@ -1,0 +1,126 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+@media (max-width: 767px) {
+.container-fluid {
+width: auto;
+padding: 0 20px;
+}
+}
+
+
+@media (max-width: 767px) {
+body {
+padding-left: 20px;
+padding-right: 20px;
+}
+}
+.navbar-fixed-top {
+margin-left: -20px;
+margin-right: -20px;
+}
+.container-fluid {
+width: auto;
+}
+
+input{
+    max-width: 270px;
+}
+
+html {
+    min-height: 100%;
+    position: relative;
+}
+.footer {
+    position: absolute;
+    bottom: 1px;
+    width: 100%;
+
+}
+
+.footer-inner {
+    padding: 20px;
+    
+    font-size: 12px;
+    background: #111;
+    color: #999;
+}
+
+.footer a {
+    color: #999;
+}
+
+.footer a:hover {
+    color: #FFF;
+    text-decoration: none;
+}
+
+body{
+    background-image: url(../..//images/fontcorps.png);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;   
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin: 5px 5px 60px;
+    
+}
+
+.btn-danger1 a{
+    color:white
+}
+.btn-danger1:hover,.btn-danger1.active{
+
+    background-color: white;
+
+
+}
+
+.btn-danger1:hover a,.btn-danger1.active a{
+    color:black
+
+}
+
+
+.btn-danger1:hover a:hover{
+    color:black;
+    background-color: white;
+}
+
+tbody{
+    color: #c77405;
+    text-align-last: auto;
+    text-align: left;
+    table-layout:auto !important;
+    width: auto !important;
+    max-width: 100% !important;
+
+}
+
+thead>tr>th {
+    vertical-align: bottom;
+
+    border-spacing: 0;
+    text-align:center;
+    border-collapse: collapse;
+    background : #FBFBFB;
+
+}
+
+td {
+    vertical-align: bottom;
+    border: 1px solid #E8E8E8;
+    border-spacing: 0;
+    border-collapse: collapse;
+    text-align:center;
+}
+
+.header>td{
+    font-weight:bold;
+
+}
+.simpletable {
+    border-collapse:collapse;
+}
+table{
+    overflow-style: marquee-line;
+    
+}

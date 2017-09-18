@@ -1,0 +1,314 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 14 janv. 2017, 16:20:33
+    Author     : lalanda
+    box-shadow: 64px 64px 12px 40px rgba(0,0,0,0.4) ,
+   border-top-left-radius: 60px 90px;
+        border-bottom-right-radius: 60px 90px;
+box-shadow: 12px 12px 0px 8px rgba(0,0,0,0.4) ;
+
+
+.footer {
+    border-top:20px solid white;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index:100;
+    padding-top: 2em;
+    background-color: #333;
+    color: white;
+    padding-bottom: 2em;
+    height: 70px;
+
+}*/
+@-moz-document url-prefix() {
+    fieldset { display: table-cell; }
+}
+input {
+    padding: 2px;
+    border: 1px solid #CCC;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    outline: none; /* Retire la bordure orange appliquée par certains
+    navigateurs (Chrome notamment) lors du focus des éléments <input> */
+}
+input:focus {
+    border-color: rgba(82, 168, 236, 0.75);
+    -moz-box-shadow: 0 0 8px rgba(82, 168, 236, 0.5);
+    -webkit-box-shadow: 0 0 8px rgba(82, 168, 236, 0.5);
+    box-shadow: 0 0 8px rgba(82, 168, 236, 0.5);
+}
+.infos{
+
+    margin-bottom: 10px;
+    border: 6px solid  ; 
+    background-color: #A9A9A9;
+
+
+
+}
+nav{
+
+
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#tagss{
+    color:white;
+    padding-right: 9px;
+    padding:9px;
+    border:3px solid maroon;
+    border-radius: 40px;
+    outline: none;
+    width: 50px;
+    height: 49px;
+    padding-left: 20px;
+    background: url(image/search2.png) right no-repeat;
+    -webkit-transition: width 2s;
+    -moz-transition: width 2s ;
+    -o-transition: width 2s ;
+    -ms-transition: width 2s     
+}
+#tagss:focus{
+    width: 200px;
+
+}
+.btn-danger1{
+    margin: 15px;
+    background-color: #000;
+
+
+}
+body{
+    background-image: url(image/fontcorps.png) ;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+   margin-left: 10px;
+    margin-right: 5px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.btn-danger1 a{
+    color:white
+}
+.btn-danger1:hover,.btn-danger1.active{
+
+    background-color: white;
+
+
+}
+
+.btn-danger1:hover a,.btn-danger1.active a{
+    color:black
+
+}
+
+
+.btn-danger1:hover a:hover{
+    color:black;
+    background-color: white;
+}
+
+#navigation1 {
+    position: fixed;
+
+}
+
+
+
+/* HEADER > MENU */
+#main-menu {
+    float: left;
+    font-size: 0;
+
+}
+
+#main-menu > li {
+    display: inline-block;
+    margin-left: 30px;
+    padding: 2px 0;
+}
+
+
+#main-menu > li.parent > a {
+    padding-left: 14px;
+}
+
+#main-menu > li > a {
+    color: #eee;
+    font-size: 14px;
+    line-height: 14px;
+    padding: 30px 0;
+    text-decoration:none;
+}
+
+#main-menu > li.active > a {
+    color: #333;
+
+
+}
+
+
+
+/* HEADER > MENU > DROPDOWN */
+#main-menu li {
+    position: relative;
+}
+
+ul.sub-menu { /* level 2 */
+    display: none;
+    left: 0px;
+    top: 38px;
+    padding-top: 10px;
+    position: absolute;
+
+    z-index: 9999;
+}
+
+
+ul.sub-menu > li > a {
+    background-color: #A9A9A9;
+    border: 5px solid #444;
+    border-top: none;
+    display: block;
+    font-size: 16px;
+    line-height: 12px;
+    padding: 10px 12px;
+
+}
+
+ul.sub-menu > li > a:hover {
+    background-color: black; 
+    color:#000 ;
+}
+
+ul.sub-menu > li:first-child {
+    border-top: 10px solid #2a2a2a;
+    margin-top: 13px;
+
+}
+
+
+
+ul.sub-menu > li:last-child > a {
+    border-radius: 0 0 10px 10px;
+
+}
+
+
+
+#main-menu li:hover > ul.sub-menu {
+    display: block; /* show the submenu */
+}
+
+
+.containe {
+    margin: 0 20px;
+    margin-top: 150px;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-bottom: 50px;
+}
+tbody{
+    color: #c77405;
+    text-align-last: auto;
+    text-align: left;
+    table-layout:auto !important;
+    width: auto !important;
+    max-width: 100% !important;
+
+}
+
+.section-dark {
+    background-color: #1a1817;
+    color: #FFFFFF;
+}
+.section-dark-blue {
+    background-color: #506367;
+    color: #FFFFFF;
+}
+.footer-demo{
+    background-attachment: fixed;
+    position: relative;
+    line-height: 20px;
+}
+.footer-demo nav > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+.footer-demo nav > ul > li{
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 10px 3px;
+    line-height: 20px;
+    text-align: center;
+}
+.footer-demo nav > ul > li:first-child{
+    margin: 0;
+    padding: 0;
+}
+.footer-demo nav > ul a:not(.btn) {
+    color: #777777;
+    display: block;
+    margin-bottom: 3px;
+}
+.footer-demo nav > ul a:not(.btn):hover, .footer nav > ul a:not(.btn):focus {
+    color: #E3E3E3;
+}
+.footer-demo .copyright {
+    color: #777777;
+    padding: 10px 15px;
+    font-size: 14px;
+    margin: 10px 3px;
+    line-height: 20px;
+    text-align: center;
+}
+.footer-demo .heart{
+    color: #EB5E28;
+}
+@media print { tr { page-break-inside: avoid !important; } }
+
+.table-bordered {
+    border: 1px solid #E8E8E8;
+    border-collapse : collapse; 
+    
+}
+
+
+thead>tr>th {
+    vertical-align: bottom;
+    
+    border-spacing: 0;
+    text-align:center;
+    border-collapse: collapse;
+    background : #FBFBFB;
+    
+}
+
+td {
+    vertical-align: bottom;
+    border: 1px solid #E8E8E8;
+    border-spacing: 0;
+    border-collapse: collapse;
+    text-align:center;
+}
+
+.header>td{
+    font-weight:bold;
+              
+}
+.simpletable {
+  border-collapse:collapse;
+}
+
