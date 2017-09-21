@@ -12,7 +12,7 @@ Website: http://thevectorlab.net/
 /* body styles */
 label{
     font-size:12px;
-
+ 
 }
 
 body {
@@ -4620,7 +4620,7 @@ ul.amounts li {
 /*portlet*/
 
 .portlet-scroll-1, .portlet-scroll-2, .portlet-scroll-3 {
-    height: 200px;
+    height: 800px;
 }
 
 .widget-title > .tools, .widget-title > .actions {

@@ -5,6 +5,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 
+
+
 <!-- BEGIN INLINE TABS PORTLET-->
 <div class="widget orange">
     <div class="widget-title">
@@ -18,569 +20,638 @@
 
 
         <div class="bs-docs-example">
+            <ul class="nav nav-tabs" id="myTabp">
 
-            <ul class="nav nav-tabs" id="myTab">
-                <c:forEach items="${categories}" var="cate">
-                    <li class="li-table li-cat <c:if test="${cate.getIdCategorieProduit()==categories.get(0).getIdCategorieProduit()}">active</c:if>"><a data-toggle="tab" href="#${cate.getIdCategorieProduit()}">${cate.getTypeCategorie()}</a></li>
-                    </c:forEach>
+                <li class="li-table active"><a data-toggle="tab" href='#rapport_region'>Region</a></li>
+                <li class="li-table "><a data-toggle="tab" href='#rapport_direction'>Direction</a></li>
+                <li class="li-table "><a data-toggle="tab" href='#rapport_site'>Site</a></li>
+                <li class="li-table "><a data-toggle="tab" href='#rapport_service'>Service</a></li>
+                <li class="li-table "><a data-toggle="tab" href='#rapport_mags'>Magasin Secondaire</a></li>
+                <li class="li-table "><a data-toggle="tab" href='#rapport_magp'>Magasin Principal</a></li>
+                <li class="li-table "><a data-toggle="tab" href='#rapport_personnel'>Personnel</a></li>
+
             </ul>
             <div class="tab-content" id="myTabContent">
-                <c:forEach items="${categories}" var="cat">
-                    <div id="${cat.getIdCategorieProduit()}" class="tab-pane fade in <c:if test="${cat==categories.get(0)}">active</c:if>">
-                            <div class="bs-docs-example">
-                                <ul class="nav nav-tabs" id="myTabp${cat.getIdCategorieProduit()}">
+                <div id='rapport_magp' class="tab-pane fade in">
+                    <form action="parametre?action=getRepporting&vue=rien" class=""> 
+                        <div class="row-fluid">
+                            <div class="control-group span3">
+                                <label class="control-label">Categorie</label>
+                                <div class="controls ">
+                                    <select name="categorie" id="" class="">
+                                        <c:forEach items="${categories}" var="cate">
+                                            <option value="${cate.getIdCategorieProduit()}">${cate.getTypeCategorie()}</option>
+                                        </c:forEach>
+                                    </select>	
 
-                                <li class="li-table active"><a data-toggle="tab" href='#rapport_region<c:out value="${cat.getIdCategorieProduit()}"></c:out>'>Region</a></li>
-                                <li class="li-table "><a data-toggle="tab" href='#rapport_direction<c:out value="${cat.getIdCategorieProduit()}"></c:out>'>Direction</a></li>
-                                <li class="li-table "><a data-toggle="tab" href='#rapport_site<c:out value="${cat.getIdCategorieProduit()}"></c:out>'>Site</a></li>
-                                <li class="li-table "><a data-toggle="tab" href='#rapport_service<c:out value="${cat.getIdCategorieProduit()}"></c:out>'>Service</a></li>
-                                <li class="li-table "><a data-toggle="tab" href='#rapport_mags<c:out value="${cat.getIdCategorieProduit()}"></c:out>'>Magasin Secondaire</a></li>
-                                <li class="li-table "><a data-toggle="tab" href='#rapport_magp<c:out value="${cat.getIdCategorieProduit()}"></c:out>'>Magasin Principal</a></li>
-                                <li class="li-table "><a data-toggle="tab" href='#rapport_personnel<c:out value="${cat.getIdCategorieProduit()}"></c:out>'>Personnel</a></li>
-
-                                </ul>
-                                <div class="tab-content" id="myTabContent<c:out value="${cat.getIdCategorieProduit()}"></c:out>">
-                                <div id='rapport_magp<c:out value="${cat.getIdCategorieProduit()}"></c:out>' class="tab-pane fade in">
-                                        <form action="parametre?action=getRepporting&vue=rien" class=""> 
-                                            <div class="row-fluid">
-                                                <div class="span3">
-                                                    <label class="control-label" for="">duree</label>
-                                                    <div class="controls ">
-                                                        <div class="input-prepend">
-                                                            <span class="add-on"><i class="icon-calendar"></i></span>
-                                                            <input id=""  name="interval" type="text" class="reservation m-ctrl-medium" />
-                                                        </div>
-                                                        <div class="input-append ">
-
-                                                        </div>
-                                                    </div>
-                                                </div>    
-
-                                                <div class="span3">
-                                                    <label class="control-label" for="region">Region</label>
-                                                    <div class="controls ">
-                                                        <div class="input-append ">
-                                                            <select class="region_magp" name="" id="">
-
-                                                            <c:forEach items="${regions}" var="co">
-                                                                <c:if test="${co.getNomRegion()==region.getNomRegion()}">
-                                                                    <option value="${co.getIdRegion()}" selected>
-                                                                        ${co.getNomRegion()}
-                                                                    </option> 
-                                                                </c:if>
-                                                                <c:if test="${co.getNomRegion()!=region.getNomRegion()}">
-                                                                    <option  value="${co.getIdRegion()}">
-                                                                        ${co.getNomRegion()}
-                                                                    </option> 
-                                                                </c:if>
-
-                                                            </c:forEach>	
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="control-group span3">
-                                                <label class="control-label">Magasin</label>
-                                                <div class="controls ">
-                                                    <select name="id_magasinP" id="" class="magasinP">
-
-                                                    </select>	
-
-                                                </div>
-                                            </div>
-
-                                            <div class="span1"></div>
-
-                                            <div class="span1">
-                                                <button type="submit" class="btn btn-primary search-catego" style="margin-top: 25px">
-                                                    <span class="icon icon-search "></span>
-                                                </button>
-                                            </div>
-
-                                            <div class="span1  hidden">
-                                                <label class="control-label" for="">categorie</label>
-                                                <div class="controls ">
-                                                    <div class="input-append ">
-                                                        <input type="text" class="disabled hidden" name="categorie" value="${cat.getTypeCategorie()}"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
                                 </div>
-                                <div id='rapport_mags<c:out value="${cat.getIdCategorieProduit()}"></c:out>' class="tab-pane fade in">
-                                        <form action="parametre?action=getRepporting&vue=rien" class="">   
-                                            <div class="span3">
-                                                <label class="control-label" for="">duree</label>
-                                                <div class="controls ">
-                                                    <div class="input-prepend">
-                                                        <span class="add-on"><i class="icon-calendar"></i></span>
-                                                        <input id=""  name="interval" type="text" class="reservation m-ctrl-medium" />
-                                                    </div>
-                                                    <div class="input-append ">
+                            </div>
+                            <div class="span3">
+                                <label class="control-label" for="">duree</label>
+                                <div class="controls ">
+                                    <div class="input-prepend">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                        <input id=""  name="interval" type="text" class="reservation m-ctrl-medium" />
+                                    </div>
+                                    <div class="input-append ">
 
-                                                    </div>
-                                                </div>
-                                            </div>    
-
-                                            <div class="span3">
-                                                <label class="control-label" for="region">Region</label>
-                                                <div class="controls ">
-                                                    <div class="input-append ">
-                                                        <select class="region_mags" name="" id="">
-
-                                                        <c:forEach items="${regions}" var="co">
-                                                            <c:if test="${co.getNomRegion()==region.getNomRegion()}">
-                                                                <option value="${co.getIdRegion()}" selected>
-                                                                    ${co.getNomRegion()}
-                                                                </option> 
-                                                            </c:if>
-                                                            <c:if test="${co.getNomRegion()!=region.getNomRegion()}">
-                                                                <option  value="${co.getIdRegion()}">
-                                                                    ${co.getNomRegion()}
-                                                                </option> 
-                                                            </c:if>
-
-                                                        </c:forEach>	
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="control-group span3">
-                                            <label class="control-label">Magasin</label>
-                                            <div class="controls ">
-                                                <select name="id_magasin" id="" class="magasinS">
-
-                                                </select>	
-
-                                            </div>
-                                        </div>
-
-
-                                        <div class="span1">
-                                            <button type="submit" class="btn btn-primary search-catego" style="margin-top: 25px">
-                                                <span class="icon icon-search "></span>
-                                            </button>
-                                        </div>
-
-                                        <div class="span1  hidden">
-                                            <label class="control-label" for="">categorie</label>
-                                            <div class="controls ">
-                                                <div class="input-append ">
-                                                    <input type="text" class="disabled hidden" name="categorie" value="${cat.getTypeCategorie()}"/>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </form>
+                                    </div>
                                 </div>
-                                <div id='rapport_region<c:out value="${cat.getIdCategorieProduit()}"></c:out>' class="tab-pane fade in active">
-                                        <form action="parametre?action=getRepporting&vue=rien">   
-                                            <div class="span3">
-                                                <label class="control-label" for="">duree</label>
-                                                <div class="controls ">
-                                                    <div class="input-prepend">
-                                                        <span class="add-on"><i class="icon-calendar"></i></span>
-                                                        <input id=""  name="interval" type="text" class="reservation m-ctrl-medium" />
-                                                    </div>
-                                                    <div class="input-append ">
+                            </div>    
 
-                                                    </div>
-                                                </div>
-                                            </div>    
+                            <div class="span3">
+                                <label class="control-label" for="region">Region</label>
+                                <div class="controls ">
+                                    <div class="input-append ">
+                                        <select class="region_magp" name="" id="">
 
-                                            <div class="span3">
-                                                <label class="control-label" for="region">Region</label>
-                                                <div class="controls ">
-                                                    <div class="input-append ">
-                                                        <select class=""name="region" id="">
+                                             <option  value="${sessionScope.personnel.getService().getSite().getRegion().getIdRegion()}">
+                                                ${sessionScope.personnel.getService().getSite().getRegion().getNomRegion()}
+                                            </option> 	
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group span3">
+                                <label class="control-label">Magasin</label>
+                                <div class="controls ">
+                                    <select name="id_magasinP" id="" class="magasinP">
 
-                                                        <c:forEach items="${regions}" var="co">
-                                                            <c:if test="${co.getNomRegion()==region.getNomRegion()}">
-                                                                <option value="${co.getIdRegion()}" selected>
-                                                                    ${co.getNomRegion()}
-                                                                </option> 
-                                                            </c:if>
-                                                            <c:if test="${co.getNomRegion()!=region.getNomRegion()}">
-                                                                <option  value="${co.getIdRegion()}">
-                                                                    ${co.getNomRegion()}
-                                                                </option> 
-                                                            </c:if>
+                                    </select>	
 
-                                                        </c:forEach>	
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span1">
+                                <label class="control-label">Tous</label>
+                                <div class="controls ">
+                                    <input type="radio" name="choix" value="tous" checked/>
 
-                                        <div class="span1">
-                                            <button type="submit" class="btn btn-primary search-catego" style="margin-top: 25px">
-                                                <span class="icon icon-search "></span>
-                                            </button>
-                                        </div>
-
-                                        <div class="span1  hidden">
-                                            <label class="control-label" for="">categorie</label>
-                                            <div class="controls ">
-                                                <div class="input-append ">
-                                                    <input type="text" class="disabled hidden" name="categorie" value="${cat.getTypeCategorie()}"/>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </form>
                                 </div>
 
+                            </div>
+                            <div class="span1">
 
-                                <div id='rapport_direction<c:out value="${cat.getIdCategorieProduit()}"></c:out>' class="tab-pane fade in ">
+                                <label class="control-label">Magasin</label>
+                                <div class="controls ">
+                                    <input type="radio" name="choix" value="non"/>
 
-                                        <form action="parametre?action=getRepporting&vue=rien">   
-                                            <div class="span3">
-                                                <label class="control-label" for="">duree</label>
-                                                <div class="controls ">
-                                                    <div class="input-prepend">
-                                                        <span class="add-on"><i class="icon-calendar"></i></span>
-                                                        <input id=""  name="interval" type="text" class="reservation m-ctrl-medium" />
-                                                    </div>
-                                                    <div class="input-append ">
-
-                                                    </div>
-                                                </div>
-                                            </div>    
-
-                                            <div class="span3">
-                                                <label class="control-label" for="region">Region</label>
-                                                <div class="controls ">
-                                                    <div class="input-append ">
-                                                        <select class="region" name="" id="">
-
-                                                        <c:forEach items="${regions}" var="co">
-                                                            <c:if test="${co.getNomRegion()==region.getNomRegion()}">
-                                                                <option value="${co.getIdRegion()}" selected>
-                                                                    ${co.getNomRegion()}
-                                                                </option> 
-                                                            </c:if>
-                                                            <c:if test="${co.getNomRegion()!=region.getNomRegion()}">
-                                                                <option  value="${co.getIdRegion()}">
-                                                                    ${co.getNomRegion()}
-                                                                </option> 
-                                                            </c:if>
-
-                                                        </c:forEach>	
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="control-group span3">
-                                            <label for="" class="control-label">Direction</label>
-                                            <div class="controls ">
-                                                <select name="direction" id="" class="input-lg direction" >
+                                </div>
+                            </div>
+                            <div class="span1">
+                                <button type="submit" class="btn btn-primary search-catego" style="margin-top: 25px">
+                                    <span class="icon icon-search "></span>
+                                </button>
+                            </div>
 
 
+                        </div>
 
+                    </form>
+                </div>
+                <div id='rapport_mags' class="tab-pane fade in">
+                    <form action="parametre?action=getRepporting&vue=rien" class=""> 
+                        <div class="row-fluid">
+                            <div class="control-group span3">
+                                <label class="control-label">Categorie</label>
+                                <div class="controls ">
+                                    <select name="categorie" id="" class="">
+                                        <c:forEach items="${categories}" var="cate">
+                                            <option value="${cate.getIdCategorieProduit()}">${cate.getTypeCategorie()}</option>
+                                        </c:forEach>
+                                    </select>	
 
-                                                </select>	
+                                </div>
+                            </div>
+                            <div class="span3">
+                                <label class="control-label" for="">duree</label>
+                                <div class="controls ">
+                                    <div class="input-prepend">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                        <input id=""  name="interval" type="text" class="reservation m-ctrl-medium" />
+                                    </div>
+                                    <div class="input-append ">
 
-                                            </div>
-                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
 
+                            <div class="span3">
+                                <label class="control-label" for="region">Region</label>
+                                <div class="controls ">
+                                    <div class="input-append ">
+                                        <select class="region_mags" name="" id="">
 
-                                        <div class="span1">
-                                            <button type="submit" class="btn btn-primary search-catego" style="margin-top: 25px">
-                                                <span class="icon icon-search "></span>
-                                            </button>
-                                        </div>
+                                            <option  value="${sessionScope.personnel.getService().getSite().getRegion().getIdRegion()}">
+                                                ${sessionScope.personnel.getService().getSite().getRegion().getNomRegion()}
+                                            </option> 	
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group span3">
+                                <label class="control-label">Magasin</label>
+                                <div class="controls ">
+                                    <select name="id_magasin" id="" class="magasinS">
 
-                                        <div class="span1  hidden">
-                                            <label class="control-label" for="">categorie</label>
-                                            <div class="controls ">
-                                                <div class="input-append ">
-                                                    <input type="text" class="disabled hidden" name="categorie" value="${cat.getTypeCategorie()}"/>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    </select>	
 
-                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span1">
+                                <label class="control-label">Tous</label>
+                                <div class="controls ">
+                                    <input type="radio" name="choix" value="tous" checked/>
+
                                 </div>
 
-                                <div id='rapport_site<c:out value="${cat.getIdCategorieProduit()}"></c:out>' class="tab-pane fade in ">
-                                        <form action="parametre?action=getRepporting&vue=rien">   
-                                            <div class="span3">
-                                                <label class="control-label" for="">duree</label>
-                                                <div class="controls ">
-                                                    <div class="input-prepend">
-                                                        <span class="add-on"><i class="icon-calendar"></i></span>
-                                                        <input id=""  name="interval" type="text" class="reservation m-ctrl-medium" />
-                                                    </div>
-                                                    <div class="input-append ">
+                            </div>
+                            <div class="span1">
 
-                                                    </div>
-                                                </div>
-                                            </div>    
+                                <label class="control-label">Magasin</label>
+                                <div class="controls ">
+                                    <input type="radio" name="choix" value="non"/>
 
-                                            <div class="span3">
-                                                <label class="control-label" for="region">Region</label>
-                                                <div class="controls ">
-                                                    <div class="input-append ">
-                                                        <select class="region_service"name="" id="">
-
-                                                        <c:forEach items="${regions}" var="co">
-                                                            <c:if test="${co.getNomRegion()==region.getNomRegion()}">
-                                                                <option value="${co.getIdRegion()}" selected>
-                                                                    ${co.getNomRegion()}
-                                                                </option> 
-                                                            </c:if>
-                                                            <c:if test="${co.getNomRegion()!=region.getNomRegion()}">
-                                                                <option  value="${co.getIdRegion()}">
-                                                                    ${co.getNomRegion()}
-                                                                </option> 
-                                                            </c:if>
-
-                                                        </c:forEach>	
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="control-group span3">
-                                            <label for="stat-site" class="control-label">Site</label>
-                                            <div class="controls ">
-                                                <select name="site" id="" class="input-lg site_service" >
-
-
-                                                </select>	
-
-                                            </div>
-                                        </div>
-
-                                        <div class="span1">
-                                            <button type="submit" class="btn btn-primary search-catego" style="margin-top: 25px">
-                                                <span class="icon icon-search "></span>
-                                            </button>
-                                        </div>
-
-                                        <div class="span1  hidden">
-                                            <label class="control-label" for="">categorie</label>
-                                            <div class="controls ">
-                                                <div class="input-append ">
-                                                    <input type="text" class="disabled hidden" name="categorie" value="${cat.getTypeCategorie()}"/>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </form>
                                 </div>
-
-
-                                <div id='rapport_service<c:out value="${cat.getIdCategorieProduit()}"></c:out>' class="tab-pane fade in ">
-                                        <form action="parametre?action=getRepporting&vue=rien">   
-                                            <div class="span3">
-                                                <label class="control-label" for="">duree</label>
-                                                <div class="controls ">
-                                                    <div class="input-prepend">
-                                                        <span class="add-on"><i class="icon-calendar"></i></span>
-                                                        <input id=""  name="interval" type="text" class="reservation m-ctrl-medium" />
-                                                    </div>
-                                                    <div class="input-append ">
-
-                                                    </div>
-                                                </div>
-                                            </div>    
-
-                                            <div class="span3">
-                                                <label class="control-label" for="">Region</label>
-                                                <div class="controls ">
-                                                    <div class="input-append ">
-                                                        <select class="region_service" name="" id="">
-
-                                                        <c:forEach items="${regions}" var="co">
-                                                            <c:if test="${co.getNomRegion()==region.getNomRegion()}">
-                                                                <option value="${co.getIdRegion()}" selected>
-                                                                    ${co.getNomRegion()}
-                                                                </option> 
-                                                            </c:if>
-                                                            <c:if test="${co.getNomRegion()!=region.getNomRegion()}">
-                                                                <option  value="${co.getIdRegion()}">
-                                                                    ${co.getNomRegion()}
-                                                                </option> 
-                                                            </c:if>
-
-                                                        </c:forEach>	
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="control-group span3">
-                                            <label for="" class="control-label">Site</label>
-                                            <div class="controls ">
-                                                <select name="" id="" class="input-lg site_service" >
-
-
-                                                </select>	
-
-                                            </div>
-                                        </div>
-                                        <div class="control-group span3">
-                                            <label class="control-label" for="">Service</label>
-                                            <div class="controls ">
-                                                <select name="service" id="" class="form-control input-lg service"  >
-
-
-                                                </select>	
-
-                                            </div>
-                                        </div>
-
-
-
-
-                                        <div class="span1 " style="margin-left: 0px">
-                                            <button type="submit" class="btn btn-primary search-catego" style="margin-top: 25px">
-                                                <span class="icon icon-search "></span>
-                                            </button>
-                                        </div>
-
-                                        <div class="span1  hidden">
-                                            <label class="control-label" for="">categorie</label>
-                                            <div class="controls ">
-                                                <div class="input-append ">
-                                                    <input type="text" class="disabled hidden" name="categorie" value="${cat.getTypeCategorie()}"/>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                    </form>
-                                </div>
-
-
-                                <div id='rapport_personnel<c:out value="${cat.getIdCategorieProduit()}"></c:out>' class="tab-pane fade in ">
-                                        <form action="parametre?action=getRepporting&vue=rien">   
-                                            <div class="span3">
-                                                <label class="control-label" for="">duree</label>
-                                                <div class="controls ">
-                                                    <div class="input-prepend">
-                                                        <span class="add-on"><i class="icon-calendar"></i></span>
-                                                        <input id=""  name="interval" type="text" class="reservation m-ctrl-medium" />
-                                                    </div>
-                                                    <div class="input-append ">
-
-                                                    </div>
-                                                </div>
-                                            </div>    
-
-                                            <div class="span3">
-                                                <label class="control-label" for="region">Region</label>
-                                                <div class="controls ">
-                                                    <div class="input-append ">
-                                                        <select class="region_service" name="" id="region_service">
-
-                                                        <c:forEach items="${regions}" var="co">
-                                                            <c:if test="${co.getNomRegion()==region.getNomRegion()}">
-                                                                <option value="${co.getIdRegion()}" selected>
-                                                                    ${co.getNomRegion()}
-                                                                </option> 
-                                                            </c:if>
-                                                            <c:if test="${co.getNomRegion()!=region.getNomRegion()}">
-                                                                <option  value="${co.getIdRegion()}">
-                                                                    ${co.getNomRegion()}
-                                                                </option> 
-                                                            </c:if>
-
-                                                        </c:forEach>	
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="control-group span3">
-                                            <label for="stat-site" class="control-label">Site</label>
-                                            <div class="controls ">
-                                                <select name="" id="" class="input-lg site_service" >
-
-
-                                                </select>	
-
-                                            </div>
-                                        </div>
-                                        <div class="control-group span3">
-                                            <label class="control-label" for="service">Service</label>
-                                            <div class="controls ">
-                                                <select name="" id="" class="service form-control input-lg "  >
-
-                                                </select>	
-
-                                            </div>
-                                        </div>
-
-
-
-
-
-                                        <div class="control-group span3" style="margin-left: 0px">
-                                            <label class="control-label" for="stat-service">personnel</label>
-                                            <div class="controls ">
-                                                <select name="personnel" id="" class="personnels form-control input-lg "  >
-
-                                                </select>	
-
-                                            </div>
-                                        </div>
-                                        <div class="span1">
-                                            <button type="submit" class="btn btn-primary search-catego" style="margin-top: 25px">
-                                                <span class="icon icon-search "></span>
-                                            </button>
-                                        </div>
-
-                                        <div class="span1  hidden">
-                                            <label class="control-label" for="">categorie</label>
-                                            <div class="controls ">
-                                                <div class="input-append ">
-                                                    <input type="text" class="disabled hidden" name="categorie" value="${cat.getTypeCategorie()}"/>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                    </form>
-                                </div>
-
-
+                            </div>
+                            <div class="span1">
+                                <button type="submit" class="btn btn-primary search-catego" style="margin-top: 25px">
+                                    <span class="icon icon-search "></span>
+                                </button>
                             </div>
                         </div>
 
 
+                    </form>
+                </div>
+                <div id='rapport_region' class="tab-pane fade in active">
+                    <form action="parametre?action=getRepporting&vue=rien">   
+                        <div class="row-fluid">
+                            <div class="control-group span3">
+                                <label class="control-label">Categorie</label>
+                                <div class="controls ">
+                                    <select name="categorie" id="" class="">
+                                        <c:forEach items="${categories}" var="cate">
+                                            <option value="${cate.getIdCategorieProduit()}">${cate.getTypeCategorie()}</option>
+                                        </c:forEach>
+                                    </select>	
+
+                                </div>
+                            </div>
+                            <div class="span3">
+                                <label class="control-label" for="">duree</label>
+                                <div class="controls ">
+                                    <div class="input-prepend">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                        <input id=""  name="interval" type="text" class="reservation m-ctrl-medium" />
+                                    </div>
+                                    <div class="input-append ">
+
+                                    </div>
+                                </div>
+                            </div>    
+
+                            <div class="span3">
+                                <label class="control-label" for="region">Region</label>
+                                <div class="controls ">
+                                    <div class="input-append ">
+                                        <select class=""name="region" id="">
+
+                                             <option  value="${sessionScope.personnel.getService().getSite().getRegion().getIdRegion()}">
+                                                ${sessionScope.personnel.getService().getSite().getRegion().getNomRegion()}
+                                            </option> 	
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="span1">
+                                <label class="control-label">Tous</label>
+                                <div class="controls ">
+                                    <input type="radio" name="choix" value="tous" checked/>
+
+                                </div>
+
+                            </div>
+                            <div class="span1">
+
+                                <label class="control-label">Region</label>
+                                <div class="controls ">
+                                    <input type="radio" name="choix" value="non"/>
+
+                                </div>
+                            </div>
+                            <div class="span1">
+                                <button type="submit" class="btn btn-primary search-catego" style="margin-top: 25px">
+                                    <span class="icon icon-search "></span>
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+
+
+                <div id='rapport_direction' class="tab-pane fade in ">
+
+                    <form action="parametre?action=getRepporting&vue=rien">   
+                        <div class="row-fluid">
+                            <div class="control-group span3">
+                                <label class="control-label">Categorie</label>
+                                <div class="controls ">
+                                    <select name="categorie" id="" class="">
+                                        <c:forEach items="${categories}" var="cate">
+                                            <option value="${cate.getIdCategorieProduit()}">${cate.getTypeCategorie()}</option>
+                                        </c:forEach>
+                                    </select>	
+
+                                </div>
+                            </div>
+
+                            <div class="span3">
+                                <label class="control-label" for="">duree</label>
+                                <div class="controls ">
+                                    <div class="input-prepend">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                        <input id=""  name="interval" type="text" class="reservation m-ctrl-medium" />
+                                    </div>
+                                    <div class="input-append ">
+
+                                    </div>
+                                </div>
+                            </div>    
+
+                            <div class="span3">
+                                <label class="control-label" for="region">Region</label>
+                                <div class="controls ">
+                                    <div class="input-append ">
+                                        <select class="region" name="" id="">
+
+                                            <option  value="${sessionScope.personnel.getService().getSite().getRegion().getIdRegion()}">
+                                                ${sessionScope.personnel.getService().getSite().getRegion().getNomRegion()}
+                                            </option> 	
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group span3">
+                                <label for="" class="control-label">Direction</label>
+                                <div class="controls ">
+                                    <select name="direction" id="" class="input-lg direction" >
 
 
 
-                        <table titre="raport sur les " class="table table-hover table-responsive table-bordered table-rapport " categori="${cat.getIdCategorieProduit()}"cellspacing="0" width="100%">
-                            <thead >
-                                <tr>
-                                    <th>Articles</th>
 
-                                    <th>QUANTITE</th>
-                                    <th>Prix Total</th>
+                                    </select>	
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span1">
+                                <label class="control-label">Tous</label>
+                                <div class="controls ">
+                                    <input type="radio" name="choix" value="tous" checked/>
+
+                                </div>
+
+                            </div>
+                            <div class="span1">
+
+                                <label class="control-label">Direction</label>
+                                <div class="controls ">
+                                    <input type="radio" name="choix" value="non"/>
+
+                                </div>
+                            </div>
+
+                            <div class="span1">
+                                <button type="submit" class="btn btn-primary search-catego" style="margin-top: 25px">
+                                    <span class="icon icon-search "></span>
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+
+                <div id='rapport_site' class="tab-pane fade in ">
+                    <form action="parametre?action=getRepporting&vue=rien">   
+                        <div class="row-fluid">
+                            <div class="control-group span3">
+                                <label class="control-label">Categorie</label>
+                                <div class="controls ">
+                                    <select name="categorie" id="" class="">
+                                        <c:forEach items="${categories}" var="cate">
+                                            <option value="${cate.getIdCategorieProduit()}">${cate.getTypeCategorie()}</option>
+                                        </c:forEach>
+                                    </select>	
+
+                                </div>
+                            </div>
+                            <div class="span3">
+                                <label class="control-label" for="">duree</label>
+                                <div class="controls ">
+                                    <div class="input-prepend">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                        <input id=""  name="interval" type="text" class="reservation m-ctrl-medium" />
+                                    </div>
+                                    <div class="input-append ">
+
+                                    </div>
+                                </div>
+                            </div>    
+
+                            <div class="span3">
+                                <label class="control-label" for="region">Region</label>
+                                <div class="controls ">
+                                    <div class="input-append ">
+                                        <select class="region_service"name="" id="">
+
+                                            <option  value="${sessionScope.personnel.getService().getSite().getRegion().getIdRegion()}">
+                                                ${sessionScope.personnel.getService().getSite().getRegion().getNomRegion()}
+                                            </option> 	
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="control-group span3">
+                                <label for="stat-site" class="control-label">Site</label>
+                                <div class="controls ">
+                                    <select name="site" id="" class="input-lg site_service" >
+
+
+                                    </select>	
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+
+                            <div class="span1">
+                                <label class="control-label">Tous</label>
+                                <div class="controls ">
+                                    <input type="radio" name="choix" value="tous" checked/>
+
+                                </div>
+
+                            </div>
+                            <div class="span1">
+
+                                <label class="control-label">Site</label>
+                                <div class="controls ">
+                                    <input type="radio" name="choix" value="non"/>
+
+                                </div>
+                            </div>
+                            <div class="span1">
+                                <button type="submit" class="btn btn-primary search-catego" style="margin-top: 25px">
+                                    <span class="icon icon-search "></span>
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+
+
+                <div id='rapport_service' class="tab-pane fade in ">
+                    <form action="parametre?action=getRepporting&vue=rien">   
+                        <div class="row-fluid">
+                            <div class="control-group span3">
+                                <label class="control-label">Categorie</label>
+                                <div class="controls ">
+                                    <select name="categorie" id="" class="">
+                                        <c:forEach items="${categories}" var="cate">
+                                            <option value="${cate.getIdCategorieProduit()}">${cate.getTypeCategorie()}</option>
+                                        </c:forEach>
+                                    </select>	
+
+                                </div>
+                            </div>
+                            <div class="span3">
+                                <label class="control-label" for="">duree</label>
+                                <div class="controls ">
+                                    <div class="input-prepend">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                        <input id=""  name="interval" type="text" class="reservation m-ctrl-medium" />
+                                    </div>
+                                    <div class="input-append ">
+
+                                    </div>
+                                </div>
+                            </div>    
+
+                            <div class="span3">
+                                <label class="control-label" for="">Region</label>
+                                <div class="controls ">
+                                    <div class="input-append ">
+                                        <select class="region_service" name="" id="">
+
+                                             <option  value="${sessionScope.personnel.getService().getSite().getRegion().getIdRegion()}">
+                                                ${sessionScope.personnel.getService().getSite().getRegion().getNomRegion()}
+                                            </option> 	
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="control-group span3">
+                                <label for="" class="control-label">Site</label>
+                                <div class="controls ">
+                                    <select name="" id="" class="input-lg site_service" >
+
+
+                                    </select>	
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="control-group span3">
+                                <label class="control-label" for="">Service</label>
+                                <div class="controls ">
+                                    <select name="service" id="" class="form-control input-lg service"  >
+
+
+                                    </select>	
+
+                                </div>
+                            </div>
 
 
 
-                                </tr>
-                            </thead>
+                            <div class="span1">
+                                <label class="control-label">Tous</label>
+                                <div class="controls ">
+                                    <input type="radio" name="choix" value="tous" checked/>
 
-                            <tbody class="stat-perso">
+                                </div>
+
+                            </div>
+                            <div class="span1">
+
+                                <label class="control-label">Service</label>
+                                <div class="controls ">
+                                    <input type="radio" name="choix" value="non"/>
+
+                                </div>
+                            </div>
+                            <div class="span1 " style="margin-left: 0px">
+                                <button type="submit" class="btn btn-primary search-catego" style="margin-top: 25px">
+                                    <span class="icon icon-search "></span>
+                                </button>
+                            </div>
+
+                        </div>
 
 
-                            </tbody>
-                            <tfoot style="color: #2fade7">
-
-                            </tfoot>
-                        </table>
-                    </div>
-                </c:forEach>
+                    </form>
+                </div>
 
 
+                <div id='rapport_personnel' class="tab-pane fade in ">
+                    <form action="parametre?action=getRepporting&vue=rien"> 
+                        <div class="row-fluid">
 
+
+                            <div class="control-group span3">
+                                <label class="control-label">Categorie</label>
+                                <div class="controls ">
+                                    <select name="categorie" id="" class="">
+                                        <c:forEach items="${categories}" var="cate">
+                                            <option value="${cate.getIdCategorieProduit()}">${cate.getTypeCategorie()}</option>
+                                        </c:forEach>
+                                    </select>	
+
+                                </div>
+                            </div>
+                            <div class="span3">
+                                <label class="control-label" for="">duree</label>
+                                <div class="controls ">
+                                    <div class="input-prepend">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                        <input id=""  name="interval" type="text" class="reservation m-ctrl-medium" />
+                                    </div>
+                                    <div class="input-append ">
+
+                                    </div>
+                                </div>
+                            </div>    
+
+                            <div class="span3">
+                                <label class="control-label" for="region">Region</label>
+                                <div class="controls ">
+                                    <div class="input-append ">
+                                        <select class="region_service" name="" id="region_service">
+
+                                            <option  value="${sessionScope.personnel.getService().getSite().getRegion().getIdRegion()}">
+                                                ${sessionScope.personnel.getService().getSite().getRegion().getNomRegion()}
+                                            </option> 
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="control-group span3">
+                                <label for="stat-site" class="control-label">Site</label>
+                                <div class="controls ">
+                                    <select name="" id="" class="input-lg site_service" >
+
+
+                                    </select>	
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="control-group span3">
+                                <label class="control-label" for="service">Service</label>
+                                <div class="controls ">
+                                    <select name="" id="" class="service form-control input-lg "  >
+
+                                    </select>	
+
+                                </div>
+                            </div>
+                            <div class="control-group span3" >
+                                <label class="control-label" for="stat-service">personnel</label>
+                                <div class="controls ">
+                                    <select name="personnel" id="" class="personnels form-control input-lg "  >
+
+                                    </select>	
+
+                                </div>
+                            </div>
+                            <div class="span1">
+                                <label class="control-label">Tous</label>
+                                <div class="controls ">
+                                    <input type="radio" name="choix" value="tous" checked/>
+
+                                </div>
+
+                            </div>
+                            <div class="span1">
+
+                                <label class="control-label">Personnel</label>
+                                <div class="controls ">
+                                    <input type="radio" name="choix" value="non"/>
+
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary search-catego" style="margin-top: 25px">
+                                <span class="icon icon-search "></span>
+                            </button>
+                        </div>
+
+                </div>
+
+                </form>
             </div>
+
+
         </div>
     </div>
+
+
+
+
+    <c:if test="${var==true}">
+        <table titre="raport sur les " class="table table-hover table-responsive table-bordered table-rapport simple_print" categori="${cat.getIdCategorieProduit()}"cellspacing="0" width="100%">
+            <thead >
+                <tr>
+                    <th>Articles</th>
+
+                    <th>QUANTITE</th>
+                    <th>Prix Total</th>
+
+
+
+                </tr>
+            </thead>
+
+            <tbody class="stat-perso">
+
+
+            </tbody>
+            <tfoot style="color: #2fade7">
+
+            </tfoot>
+        </table>
+    </c:if>
+
+    <a class="btn btn-inverse   hidden-print print-pdf" style="margin-left: 400px;margin-bottom: 10px;border-radius: 5px">Imprimer <i class="icon-print icon-big"></i></a>
+
+
+
+
+
 </div>

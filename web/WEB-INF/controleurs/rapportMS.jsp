@@ -17,65 +17,79 @@
     <div class="widget-body">
 
 
-        <div class="bs-docs-example">
-
-            <ul class="nav nav-tabs" id="myTab">
-                <c:forEach items="${categories}" var="cate">
-                    <li class="li-table <c:if test="${cate.getIdCategorie()==categories.get(0).getIdCategorie()}">active</c:if>"><a data-toggle="tab" href="#${cate.getIdCategorie()}">${cate.getNomCategorie()}</a></li>
-                    </c:forEach>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-                <c:forEach items="${categories}" var="cat">
-                    <div id="${cat.getIdCategorie()}" class="tab-pane fade in <c:if test="${cat==categories.get(0)}">active</c:if>">
-                        <form action="parametre?action=getRepporting&vue=rien" class="non-region hidden-phone" id_magasin="${cat.getMagasinSecondaire().getIdMagasin()}">   
 
 
-                            <div class="input-append input-prepend  search-input-area">
+        <form action="parametre?action=getRepporting&vue=rien" class="non-region hidden-phone" id_magasin="${categories.get(0).getMagasinSecondaire().getIdMagasin()}">   
+            <label id="nom_magasin" class="hidden">${categories.get(0).getMagasinSecondaire().getNomMagasin()}</label>
+            <div class="control-group span3">
+                <label class="control-label">Categorie</label>
+                <div class="controls ">
+                    <select name="categorie" id="" class="">
+                        <c:forEach items="${categories}" var="cate">
+                            <option value="${cate.getIdCategorie()}">${cate.getNomCategorie()}</option>
+                        </c:forEach>
+                    </select>	
 
-                                <input class="reservation" name="interval" id="appendedInputButton" placeholder="interval de temps" type="text">
-                                <button class="btn btn-primary search-catego" type="submit"><i class="icon-search"></i> </button>
-                            </div>
+                </div>
+            </div>
 
+            <div class="span1">
+                <label class="control-label">Tous</label>
+                <div class="controls ">
+                    <input type="radio" name="choix" value="tous" checked/>
 
-                            <div class="span3  hidden">
-                                <label class="control-label" for="">categorie</label>
-                                <div class="controls ">
-                                    <div class="input-append ">
-                                        <input type="text" class="disabled hidden" name="categorie" value="${cat.getNomCategorie()}"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-
-
-
-                        <table titre="raport sur les ${cat.getNomCategorie()}" class="table table-hover table-responsive table-bordered table-rapport " categori="${cat.getIdCategorie()}"cellspacing="0" width="100%">
-                            <thead >
-                                <tr>
-                                    <th>Articles</th>
-
-                                    <th>QUANTITE</th>
-                                    <th>Prix Total</th>
-
-
-
-                                </tr>
-                            </thead>
-
-                            <tbody class="stat-perso">
-
-
-                            </tbody>
-                            <tfoot style="color: #2fade7">
-
-                            </tfoot>
-                        </table>
-                    </div>
-                </c:forEach>
-
-
+                </div>
 
             </div>
-        </div>
+            <div class="span1">
+
+                <label class="control-label">Personnel</label>
+                <div class="controls ">
+                    <input type="radio" name="choix" value="non"/>
+
+                </div>
+            </div>
+            <div class="input-append input-prepend  ">
+                <label class="control-label">Interval</label>
+                <input class="reservation" name="interval" id="" placeholder="interval de temps" type="text">
+                <button class="btn btn-primary search-catego" type="submit"><i class="icon-search"></i> </button>
+            </div>
+
+
+
+        </form>
+
+
+
+
+        <c:if test="${var==true}">
+            <table titre="raport sur les ${cat.getNomCategorie()}" class="table table-hover table-responsive table-bordered table-rapport " categori="${cat.getIdCategorie()}"cellspacing="0" width="100%">
+                <thead >
+                    <tr>
+                        <th>Articles</th>
+
+                        <th>QUANTITE</th>
+                        <th>Prix Total</th>
+
+
+
+                    </tr>
+                </thead>
+
+                <tbody class="stat-perso">
+
+
+                </tbody>
+                <tfoot style="color: #2fade7">
+
+                </tfoot>
+            </table>
+        </c:if>
+        <a class="btn btn-inverse   hidden-print print-pdf " style="margin-left: 400px;margin-bottom: 10px;border-radius: 5px">Imprimer <i class="icon-print icon-big"></i></a>
+
+
+
+
+
     </div>
 </div>

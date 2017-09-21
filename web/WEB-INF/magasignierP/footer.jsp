@@ -94,6 +94,11 @@
 
 
 <c:if test="${vue=='rapport'}">
+    <script src="admin/pdfmake-master/build/pdfmake.min.js" type="text/javascript"></script>
+    <script src="admin/pdfmake-master/build/vfs_fonts.js" type="text/javascript"></script>
+    <script src="admin/pdfmake-master/src/printer.js" type="text/javascript"></script>
+    <script src="admin/pdfmake-master/examples/tables.js" type="text/javascript"></script>
+    <script src="js/myjs/controllers/pesoTable.js" type="text/javascript"></script>
     <script src="js/myjs/controllers/pesoTable.js" type="text/javascript"></script>
 </c:if>
 <!-- END JAVASCRIPTS -->   

@@ -36,6 +36,8 @@
 <script src="admin/js/external-dragging-calendar.js" type="text/javascript"></script>
 <script src="assets/glDatePicker-2.0/glDatePicker.js" type="text/javascript"></script>
 
+
+
 <c:if test="${vue=='rapport' or vue=='Historique MS' or vue=='Historique MP'}">
     <script src="js/myjs/controllers/stat-camanber.js" type="text/javascript"></script>
 
@@ -49,14 +51,19 @@
     <script src="js/myjs/controllers/stat-chart.js" type="text/javascript"></script>
 </c:if>
 
+<script src="admin/pdfmake-master/build/pdfmake.min.js" type="text/javascript"></script>
+    <script src="admin/pdfmake-master/build/vfs_fonts.js" type="text/javascript"></script>
+    <script src="admin/pdfmake-master/src/printer.js" type="text/javascript"></script>
+    <script src="admin/pdfmake-master/examples/tables.js" type="text/javascript"></script>
 <c:if test="${vue=='statistiques' or vue=='Historique MS' or vue=='Historique MP' or vue=='rapport'}">
+    
     <script src="js/myjs/controllers/pesoTable.js" type="text/javascript"></script>
 </c:if>
 <c:if test="${vue=='Historique MS'}">
     <script src="js/myjs/controllers/statBudget.js" type="text/javascript"></script>
 </c:if>
 
- <script src="js/myjs/controllers/simple_print.js" type="text/javascript"></script>
+<script src="js/myjs/controllers/simple_print.js" type="text/javascript"></script>
 <script src="js/myjs/controllers/notifications.js" type="text/javascript"></script>
 
 
@@ -544,8 +551,6 @@
 <script src="js/dataTables.select.js" type="text/javascript"></script>   
 <script src="js/buttons.colVis.js" type="text/javascript"></script>
 <script src="js/jszip.js" type="text/javascript"></script>
-<script src="js/pdfmake.js" type="text/javascript"></script>
-<script src="js/vfs_fonts.js" type="text/javascript"></script>
 <script src="js/buttons.jqueryui.js" type="text/javascript"></script>
 <script src="js/buttons.html5.js" type="text/javascript"></script>
 <script src="js/buttons.print.js" type="text/javascript"></script>

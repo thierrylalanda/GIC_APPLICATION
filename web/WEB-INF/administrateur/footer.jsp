@@ -82,6 +82,10 @@
 <script src="js/js/easypiechart.js" type="text/javascript"></script>
 
 
+    <script src="admin/pdfmake-master/build/pdfmake.min.js" type="text/javascript"></script>
+    <script src="admin/pdfmake-master/build/vfs_fonts.js" type="text/javascript"></script>
+    <script src="admin/pdfmake-master/src/printer.js" type="text/javascript"></script>
+    <script src="admin/pdfmake-master/examples/tables.js" type="text/javascript"></script>
 
 <c:if test="${vue=='statistiques' or vue=='editeMagasinS' or vue=='editeMagP' or vue=='rapport'}">
     <script src="js/myjs/controllers/pesoTable.js" type="text/javascript"></script>
@@ -100,8 +104,9 @@
 
     <script src="js/myjs/controllers/stat-chart.js" type="text/javascript"></script>
 </c:if>
-    <script src="js/myjs/controllers/simple_print.js" type="text/javascript"></script>
    
+    <script src="js/myjs/controllers/simple_print.js" type="text/javascript"></script>
+    
     
 <!-- END JAVASCRIPTS -->   
 <script>
